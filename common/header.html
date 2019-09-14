@@ -1,0 +1,62 @@
+<div class="header-in">
+    <div class="header-default">
+        <div class="header-center">
+            <div class="header-center-in">
+                <img src="./../common/images/topbar-it666-search.png" >
+                <input type="text" placeholder="大家都在搜 那个女孩">
+                <span class="me-title">我的音乐</span>
+                <div class="header-switch">
+                    <i></i>
+                    <span class="active">动态</span>
+                    <span>附近</span>
+                </div>
+            </div>
+        </div>
+        <div class="header-left"></div>
+        <div class="header-cancle">
+            <a href="#">取消</a>
+        </div>
+        <div class="header-right"></div>
+    </div>
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="search-ad">
+                <img src="./../common/images/search-banner.gif" class="fluid-img">
+                <span>X</span>
+            </div>
+            <div class="search-history">
+                <div class="history-top">
+                    <h5>搜索历史</h5>
+                    <img src="./../common/images/search-it666-delete.png" alt="">
+                </div>
+                <ul class="history-bottom"></ul>
+            </div>
+            <div class="search-hot">
+                <div class="hot-top">
+                    <h6>热榜</h6>
+                </div>
+                <ul class="hot-bottom"></ul>
+            </div>
+            <div class="search-current">
+                <div class="current-top"></div>
+                <ul class="current-bottom"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script id="hotItem" type="text/html">
+    <%for(let i = 0;i<data.length;i++) {%>
+    <li>
+        <div class="hot-bottom-left"><%=i+1%></div>
+        <div class="hot-bottom-right">
+            <p>
+                <strong><%=data[i].searchWord%></strong>
+                <span><%=data[i].score%></span>
+                <img src="<%=data[i].iconUrl%>" alt="">
+            </p>
+            <p><%=data[i].content%></p>
+        </div>
+    </li>
+    <% } %>
+</script>
+<link rel="stylesheet" href="./../common/css/header.css">
