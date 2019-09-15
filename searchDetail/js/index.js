@@ -18,6 +18,8 @@ $(function () {
             SearchApis.getSearch(keyword,this.offset,this.limit,this.type)
                 .then(function (data) {
                     //创建所有分区
+                    data.result.order.splice(1,1);
+                    data.result.order.splice(3,1);
                     let html = template("compositeItem",data.result);
                     $(".composite").html(html);
                     searchScroll.refresh();

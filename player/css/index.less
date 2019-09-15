@@ -1,0 +1,318 @@
+@import "../../css/common";
+//内容
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  height: 88/100rem;
+  line-height: 88/100rem;
+  padding: 0 30/100rem;
+  box-sizing: border-box;
+  .header-in{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    img{
+      width: 56/100rem;
+      height: 56/100rem;
+      vertical-align: top;
+      position: relative;
+      top: 16/100rem;
+    }
+    div{
+      color: #fff;
+      text-align: center;
+      .header-title{
+        font-size: 30/100rem;
+        line-height: 58/100rem;
+      }
+      .header-singer{
+        font-size: 22/100rem;
+        line-height: 30/100rem;
+      }
+    }
+  }
+}
+.footer{
+  width: 100%;
+  padding: 0 30/100rem;
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  .footer-in{
+    width: 100%;
+    .footer-top{
+      width: 100%;
+      height: 88/100rem;
+      line-height: 88/100rem;
+      display: flex;
+      span{
+        font-size: 18/100rem;
+        color: #fff;
+      }
+      .progress-bar{
+        position: relative;
+        top: 39/100rem;
+        flex: 1;
+        margin: 0 20/100rem;
+        height: 10/100rem;
+        .progress-line{
+          width: 50%;
+          position: relative;
+          height: 100%;
+          background: #fff;
+          .progress-dot{
+            margin-left: 100%;
+            width: 20/100rem;
+            height: 20/100rem;
+            background: #fff;
+            border-radius: 50%;
+            .vCenter();
+          }
+        }
+      }
+    }
+    .footer-bottom{
+      width: 100%;
+      height: 120/100rem;
+      display: flex;
+      justify-content: space-between;
+      li{
+        img{
+          width: 56/100rem;
+          height: 56/100rem;
+          padding-top: 32/100rem;
+        }
+        &.play{
+          position: relative;
+          &.active{
+            img{
+              &:nth-of-type(1){
+                display: none;
+              }
+              &:nth-of-type(2){
+                display: inline-block;
+              }
+            }
+          }
+          img{
+            top: 0;
+            .hCenter();
+            width: 100/100rem;
+            height: 100/100rem;
+            padding-top: 10/100rem;
+          }
+          img:nth-of-type(2){
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+.main{
+  width: 100%;
+  height: 100%;
+  background:rgba(0,0,0,0.5);
+  .bg{
+    width: 100%;
+    height: 100%;
+    background: url("./../images/test.jpg") no-repeat center top;
+    background-size: auto 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    filter: blur(50px);
+  }
+  .main-in{
+    width: 100%;
+    height: 100%;
+    padding-top: 88/100rem;
+    padding-bottom: 208/100rem;
+    box-sizing: border-box;
+    position: relative;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    &.active{
+      .main-default{
+        display: none;
+      }
+      .main-lyric{
+        display: block;
+      }
+    }
+    .main-default{
+      width: 100%;
+      height: 100%;
+      position: relative;
+      .default-top{
+        width: 100%;
+        z-index: 999;
+        img {
+          width: 250/100rem;
+          .hCenter();
+          margin-left: -60/100rem;
+          transform-origin: 62/100rem 62/100rem;
+          transform: rotate(-30deg);
+          z-index: 999;
+          transition: transform 1s linear;
+        }
+      }
+      .default-middle{
+        width: 100%;
+        height: 500/100rem;
+        .vCenter();
+        .bg-disc{
+          width: 500/100rem;
+          height: 500/100rem;
+          background: rgba(255,255,255,0.5);
+          border-radius: 50%;
+          .center();
+          div{
+            width: 450/100rem;
+            height: 450/100rem;
+            background: rgba(0,0,0,0.5);
+            border-radius: 50%;
+            .center();
+          }
+        }
+        .swiper-container{
+          width: 100%;
+          height: 100%;
+          .swiper-slide{
+            .disc-pic{
+              width: 500/100rem;
+              height: 500/100rem;
+              background: url("./../images/player-it666-disc.png") no-repeat;
+              background-size: 100% auto;
+              .center();
+              animation: sport 10s linear 0s infinite normal;
+              animation-play-state: paused;
+              img{
+                width: 320/100rem;
+                height: 320/100rem;
+                border-radius: 50%;
+                .center();
+              }
+            }
+          }
+
+        }
+      }
+      .default-bottom{
+        display: flex;
+        width: 100%;
+        padding: 0 30/100rem;
+        box-sizing: border-box;
+        justify-content: space-between;
+        position: absolute;
+        left: 0;
+        bottom: 60/100rem;
+        li{
+          img{
+            width: 56/100rem;
+            height: 56/100rem;
+          }
+        }
+      }
+    }
+    .main-lyric{
+      width: 100%;
+      height: 100%;
+      display: none;
+      overflow: hidden;
+      position: relative;
+      .lyric-top{
+
+        display: flex;
+        justify-content: space-between;
+        padding: 0 30/100rem;
+        img{
+          width: 56/100rem;
+          height: 56/100rem;
+        }
+        .voice-progress-bar{
+          flex: 1;
+          margin-left: 20/100rem;
+          height: 10/100rem;
+          background: rgba(255,255,255,0.5);
+          position: relative;
+          top: 23/100rem;
+          .voice-progress-line{
+            width: 50%;
+            height: 100%;
+            background: #fff;
+            position: relative;
+            .voice-progress-dot{
+              margin-left: 100%;
+              .vCenter();
+              width: 20/100rem;
+              height: 20/100rem;
+              background: #fff;
+              border-radius: 50%;
+            }
+          }
+        }
+      }
+      .lyric-bottom{
+        width: 100%;
+        height: 50%;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        padding: 0 30/100rem;
+        box-sizing: border-box;
+        .lyric-list{
+          li{
+            font-size: 30/100rem;
+            color: #666;
+            text-align: center;
+            height: 80/100rem;
+            line-height: 80/100rem;
+          }
+        }
+        .lyric-time-line{
+          width: 100%;
+          height: 80/100rem ;
+          line-height: 80/100rem;
+          display: flex;
+          justify-content: space-between;
+          position: absolute;
+          left: 0;
+          top: 0;
+          img{
+            width: 56/100rem;
+            height: 56/100rem ;
+            position: relative;
+            top: 12/100rem;
+          }
+          div{
+            flex: 1;
+            margin: 0 20/100rem;
+            height: 5/100rem;
+            background: rgba(255,255,255,0.5);
+            position: relative;
+            top: 38/100rem;
+          }
+          span{
+            font-size: 18/100rem;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+@keyframes sport {
+  from{
+    transform: translate(-50%,-50%) rotate(0deg);
+  }
+  to{
+    transform: translate(-50%,-50%) rotate(360deg);
+  }
+}
