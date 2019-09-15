@@ -83,7 +83,21 @@
             })
         }
     }
+    /*player 数据接口*/
+    class MusicApis{
+        static getSongDetail(ids){
+            return WJHttp.get("/song/detail",{
+                ids : ids,
+            })
+        }
+        static getSongUrl(id){
+            return WJHttp.get("/song/url",{
+                id:id
+            })
+        }
+    }
     window.WJHttp =WJHttp;
     window.HomeApis = HomeApis;
     window.SearchApis = SearchApis;
+    window.MusicApis = MusicApis;
 })();
