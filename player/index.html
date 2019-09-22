@@ -32,7 +32,7 @@
 <!--头部-->
 <div class="header">
     <div class="header-in">
-        <img src="images/player-it666-back.png" alt="">
+        <img src="images/player-it666-back.png" class="go-back">
         <div>
             <p class="header-title">江南</p>
             <p class="header-singer">凌俊杰</p>
@@ -40,6 +40,7 @@
         <img src="images/player-it666-share.png" alt="">
     </div>
 </div>
+
 <!--内容-->
 <div class="main">
     <div class="bg"></div>
@@ -53,14 +54,7 @@
                     <div></div>
                 </div>
                 <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="disc-pic">
-                                <img src="images/test.jpg" alt="">
-                            </div>
-
-                        </div>
-                    </div>
+                    <div class="swiper-wrapper"></div>
                 </div>
             </div>
             <ul class="default-bottom">
@@ -82,25 +76,7 @@
                 </div>
             </div>
             <div class="lyric-bottom">
-                <ul class="lyric-list">
-                    <li>sfasfafsafsafs</li>
-                    <li>sfasfafsafsafs</li>
-                    <li>sfasfafsafsafs</li>
-                    <li>sfasfafsafsafs</li>
-                    <li>sfasfafsafsafs</li>
-                    <li>sfasfafsafsafs</li>
-                    <li>sfasfafsafsafs</li>
-                    <li>sfasfafsafsafs</li>
-                    <li>sfasfafsafsafs</li>
-                    <li>sfasfafsafsafs</li>
-                    <li>sfasfafsafsafs</li>
-                    <li>sfasfafsafsafs</li>
-                    <li>sfasfafsafsafs</li>
-                    <li>sfasfafsafsafs</li>
-                    <li>sfasfafsafsafs</li>
-                    <li>sfasfafsafsafs</li>
-                    <li>sfasfafsafsafs</li>
-                </ul>
+                <ul class="lyric-list"></ul>
                 <div class="lyric-time-line">
                     <img src="images/player-small-play.png" alt="">
                     <div></div>
@@ -110,6 +86,7 @@
         </div>
     </div>
 </div>
+
 <!--底部-->
 <div class="footer">
     <div class="footer-in">
@@ -123,15 +100,38 @@
             <span class="total-time">04:43</span>
         </div>
         <ul class="footer-bottom">
-           <li><img src="images/player-it666-loop.png" alt=""></li>
-           <li><img src="images/player-it666-pre.png" alt=""></li>
+           <li class="play-mode"><img src="images/player-it666-loop.png" alt=""></li>
+           <li class="prev"><img src="images/player-it666-pre.png" alt=""></li>
            <li class="play">
                <img src="images/player-it666-play.png" alt="">
                <img src="images/player-it666-pause.png" alt="">
            </li>
-           <li><img src="images/player-it666-next.png" alt=""></li>
-           <li><img src="images/player-it666-list.png" alt=""></li>
+           <li class="next"><img src="images/player-it666-next.png" alt=""></li>
+           <li class="list"><img src="images/player-it666-list.png" alt=""></li>
         </ul>
+    </div>
+</div>
+
+<!--模态窗口-->
+<div class="modal">
+    <div class="modal-main">
+        <div class="modal-top">
+            <p>
+                <img src="images/playlist-it666-loop.png" alt="">
+                <span>列表循环(2)</span>
+            </p>
+            <div>
+                <p>
+                    <img src="images/player-small-favorite.png" alt="">
+                    <span>收藏全部</span>
+                </p>
+                <img src="images/player-it666-delete.png" class="clear-all">
+            </div>
+        </div>
+        <div class="modal-list">
+            <ul class="modal-middle"></ul>
+        </div>
+        <div class="modal-bottom">关闭</div>
     </div>
 </div>
 <audio></audio>
@@ -148,6 +148,6 @@
 <script src="./../js/clamp.js"></script>
 <script src="./../js/tools.js"></script>
 <script src="js/progress.js"></script>
+<script src="js/player.js"></script>
 <script src="js/index.js"></script>
-
 </html>

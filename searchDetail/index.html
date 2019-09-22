@@ -115,15 +115,16 @@
 </body>
 <script id="songItem" type="text/html">
     <%for(let i = 0;i< songs.length; i++){%>
-    <li>
+    <li data-music-id="<%=songs[i].id%>">
         <div class="bottom-left">
             <i></i>
             <div>
-                <p><%=songs[i].name%></p>
+                <p class="song-name"><%=songs[i].name%></p>
                 <p>
                     <img src="images/sq.png" alt="">
-                    <%=songs[i].artists[0].name%>-
-                    <%=songs[i].album.name%>
+                    <span class="song-singer"><%=songs[i].artists[0].name%></span>
+                    -
+                    <span><%=songs[i].album.name%></span>
                 </p>
             </div>
         </div>

@@ -18,8 +18,6 @@ $(function () {
             SearchApis.getSearch(keyword,this.offset,this.limit,this.type)
                 .then(function (data) {
                     //创建所有分区
-                    data.result.order.splice(1,1);
-                    data.result.order.splice(3,1);
                     let html = template("compositeItem",data.result);
                     $(".composite").html(html);
                     searchScroll.refresh();
@@ -39,19 +37,21 @@ $(function () {
                             });
                         } else if (name === "user"){
                             currentData.userprofiles = currentData.users;
-                        }else if(name === "mlog"){
-                            return true
-                        }else if(name === "talk"){
-                            return true
                         }
-                        let currentHtml = template(name+'Item',currentData);
-                        $(".composite>."+name+">.list").html(currentHtml);
+                        try {
+                            let currentHtml = template(name+'Item',currentData);
+                            $(".composite>."+name+">.list").html(currentHtml);
+                        }
+                        catch (e) {
+                            console.log(e);
+                        }
                         searchScroll.refresh();
                     });
                     //监听分区底部点击事件
                     $(".composite-bottom").click(function () {
                         $(".nav>ul>."+this.dataset.name).click();
                     })
+
                 })
                 .catch(function (e) {
                     console.log(e);
@@ -88,6 +88,7 @@ $(function () {
             this.type=1;
         }
         initData (){
+            let that =this;
             //全选的点击事件
             $(".multiple-select").click(function () {
                 $(".song-top").toggleClass("actived");
@@ -107,6 +108,49 @@ $(function () {
                     let html = template("songItem",data.result);
                     $(".song>.list").html(html);
                     searchScroll.refresh();
+                    //监听单曲的点击事件
+                    $(".song>.list>li").click(function () {
+                        let musicId = this.dataset.musicId;
+                        let musicName = $(this).find(".song-name").text();
+                        let musicSinger = $(this).find(".song-singer").text();
+                        setSongs(musicId,musicName,musicSinger);
+                        window.location.href = "./../player/index.html";
+                    });
+
+                    //监听每一首歌曲单选框的点击
+                    $(".song>.list>li i").click(function (event) {
+                        $(this).parents("li").toggleClass("actived");
+                        event.stopPropagation();
+                        if ($(".main-in>.song>.list>li.actived").length ===
+                            $(".main-in>.song>.list>li").length){
+                            if ($(".check-all").hasClass("actived")){}
+                            else{
+                                $(".check-all").addClass("actived");
+                            }
+                        }
+                        else{
+                            if ($(".check-all").hasClass("actived")){
+                                $(".check-all").removeClass("actived");
+                            }
+                        }
+                    });
+
+                    //监听播放全部的点击
+                    $(".play-all").click(function () {
+                        let lis = null;
+                       if ($(".main-in>.song>.list>li.actived").length === 0){
+                           lis = $(".main-in>.song>.list>li");
+                       } else{
+                           lis = $(".main-in>.song>.list>li.actived");
+                       }
+                       lis.forEach(function (li) {
+                           let musicId = li.dataset.musicId;
+                           let musicName = $(li).find(".song-name").text();
+                           let musicSinger = $(li).find(".song-singer").text();
+                           setSongs(musicId,musicName,musicSinger);
+                       });
+                        window.location.href = "./../player/index.html";
+                    });
                 })
                 .catch(function (e) {
                     console.log(e);
@@ -364,5 +408,7 @@ $(function () {
 
     let obj = new Composite(keyword);
     obj.initData();
+
+
 });
 

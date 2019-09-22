@@ -95,6 +95,11 @@
                 id:id
             })
         }
+        static getSongLyric(id){
+            return WJHttp.get("/lyric",{
+                id:id
+            })
+    }
     }
     window.WJHttp =WJHttp;
     window.HomeApis = HomeApis;

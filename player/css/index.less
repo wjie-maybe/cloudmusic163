@@ -1,5 +1,5 @@
 @import "../../css/common";
-//内容
+/*头部*/
 .header{
   position: fixed;
   top: 0;
@@ -36,6 +36,7 @@
     }
   }
 }
+/*底部*/
 .footer{
   width: 100%;
   padding: 0 30/100rem;
@@ -115,9 +116,11 @@
     }
   }
 }
+/*内容*/
 .main{
   width: 100%;
   height: 100%;
+  overflow: hidden;
   background:rgba(0,0,0,0.5);
   .bg{
     width: 100%;
@@ -140,16 +143,20 @@
     z-index: 666;
     &.active{
       .main-default{
-        display: none;
+        //display: none;
+        top: 200%;
       }
       .main-lyric{
-        display: block;
+        //opacity: 1;
+        top: -100%;
       }
     }
     .main-default{
       width: 100%;
       height: 100%;
       position: relative;
+      top: 0;
+      left: 0;
       .default-top{
         width: 100%;
         z-index: 999;
@@ -224,14 +231,17 @@
     .main-lyric{
       width: 100%;
       height: 100%;
-      display: none;
+      //opacity: 0;
       overflow: hidden;
       position: relative;
+      top: 200%;
+      left: 0;
       .lyric-top{
-
         display: flex;
         justify-content: space-between;
         padding: 0 30/100rem;
+        position: relative;
+        z-index: 999;
         img{
           width: 56/100rem;
           height: 56/100rem;
@@ -274,13 +284,19 @@
             text-align: center;
             height: 80/100rem;
             line-height: 80/100rem;
+            &.active{
+              color: #fff !important;
+            }
+            &.hover{
+              color: #f00;
+            }
           }
         }
         .lyric-time-line{
           width: 100%;
           height: 80/100rem ;
           line-height: 80/100rem;
-          display: flex;
+          display: none;
           justify-content: space-between;
           position: absolute;
           left: 0;
@@ -316,3 +332,86 @@
     transform: translate(-50%,-50%) rotate(360deg);
   }
 }
+/*模态窗口*/
+.modal{
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  .modal-main{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    .modal-top{
+      overflow: hidden;
+      width: 100%;
+      height: 88/100rem;
+      line-height: 88/100rem;
+      padding: 0 30/100rem;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      font-size: 28/100rem;
+      border-bottom: 1px solid #ccc;
+      border-top-left-radius: 20/100rem;
+      border-top-right-radius: 20/100rem;
+      background: #fff;
+      img{
+        width: 56/100rem;
+        height: 56/100rem;
+        vertical-align: top;
+        position: relative;
+        top: 16/100rem;
+      }
+      &>p{
+        display: flex;
+        justify-content: space-between;
+      }
+      &>div{
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+    .modal-list{
+      width: 100%;
+      height: 445/100rem;
+      overflow: hidden;
+      background: #fff;
+      .modal-middle{
+        background: #fff;
+        width: 100%;
+        li{
+          width: 100%;
+          height: 88/100rem;
+          line-height: 88/100rem;
+          display: flex;
+          justify-content: space-between;
+          font-size: 28/100rem;
+          border-bottom: 1px solid #ccc;
+          img {
+            width: 56/100rem;
+            height: 56/100rem;
+            vertical-align: top;
+            position: relative;
+            top: 16/100rem;
+          }
+        }
+      }
+    }
+    .modal-bottom{
+      width: 100%;
+      font-size: 28/100rem  ;
+      background: #fff;
+      height: 120/100rem;
+      line-height: 120/100rem;
+      text-align: center;
+    }
+  }
+}
+

@@ -165,6 +165,45 @@
             second: second,
         }
     }
+    function getSongs() {
+        let songArray = sessionStorage.getItem("songs");
+        if (!songArray){
+            songArray = [];
+        }
+        else {
+            songArray = JSON.parse(songArray);
+        }
+        return songArray;
+    }
+    function setSongs(id,name,singer) {
+        let songArray = getSongs();
+        let flag = false;
+        for (let i =0;i<songArray.length;i++){
+            let song =songArray[i];
+            if (song.id ===id){
+                flag = true;
+                break;
+            }
+        }
+        if (!flag){
+            songArray.unshift({id:id,name:name,singer:singer});
+            sessionStorage.setItem("songs",JSON.stringify(songArray));
+        }
+    }
+    function clearSongs(){
+        window.sessionStorage.removeItem("songs");
+    }
+    function deleteSongs(index){
+        let arrSongs = getSongs();
+        arrSongs.splice(index,1);
+        sessionStorage.setItem("songs",JSON.stringify(arrSongs));
+        return arrSongs.length;
+    }
+    function getRandomIntInclusive(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min; //含最大值，含最小值
+    }
     window.getScreen = getScreen;
     window.getPageScroll = getPageScroll;
     window.addEvent = addEvent;
@@ -173,4 +212,9 @@
     window.throttle = throttle;
     window.formatNum = formatNum;
     window.formartTime = formartTime;
+    window.getSongs = getSongs;
+    window.setSongs = setSongs;
+    window.clearSongs = clearSongs;
+    window.deleteSongs = deleteSongs;
+    window.getRandomIntInclusive = getRandomIntInclusive;
 })();
