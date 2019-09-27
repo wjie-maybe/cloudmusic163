@@ -101,8 +101,27 @@
             })
     }
     }
+    /*电台详情节目数据接口*/
+    class DetailApis{
+        static getDjRadio(id){
+            return WJHttp.get("/dj/detail", {
+                rid: id
+            });
+        }
+        /*
+        asc: false返回的数据从新到旧
+        asc: true返回的数据从旧到新
+        * */
+        static getProgram(id, asc=false){
+            return WJHttp.get("/dj/program", {
+                rid: id,
+                asc: asc
+            });
+        }
+    }
     window.WJHttp =WJHttp;
     window.HomeApis = HomeApis;
     window.SearchApis = SearchApis;
     window.MusicApis = MusicApis;
+    window.DetailApis = DetailApis;
 })();

@@ -1,4 +1,6 @@
 $(function () {
+    //解决移动端点击延迟问题
+    FastClick.attach(document.body);
     //1.获取其他界面传过来的歌曲信息
     let songArray = getSongs();
     let  index = 0;

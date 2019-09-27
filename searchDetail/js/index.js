@@ -1,4 +1,6 @@
 $(function () {
+    //解决移动端点击延迟问题
+    FastClick.attach(document.body);
     //0.创建类管理各界面
     class Views{
         constructor(params){
@@ -68,6 +70,7 @@ $(function () {
             //获取综合内容
             SearchApis.getSearch(keyword,this.offset,this.limit,this.type)
                 .then(function (data) {
+                    if (isEmptyObj(data.result)){return}
                     if (data.result.artistCount<10){
                         $(".pull-up").hide();
                     }
@@ -105,6 +108,7 @@ $(function () {
             //获取单曲内容
             SearchApis.getSearch(keyword,this.offset,this.limit,this.type)
                 .then(function (data) {
+                    if (isEmptyObj(data.result)){return}
                     let html = template("songItem",data.result);
                     $(".song>.list").html(html);
                     searchScroll.refresh();
@@ -176,6 +180,7 @@ $(function () {
             //获取综合内容
             SearchApis.getSearch(keyword,this.offset,this.limit,this.type)
                 .then(function (data) {
+                    if (isEmptyObj(data.result)){return}
                     data.result.videos.forEach(function (obj) {
                         obj.playCount = formatNum(obj.playTime);
                         let res = formartTime(obj.durationms);
@@ -200,6 +205,7 @@ $(function () {
             //获取综合内容
             SearchApis.getSearch(keyword,this.offset,this.limit,this.type)
                 .then(function (data) {
+                    if (isEmptyObj(data.result)){return}
                     let html = template("userItem",data.result);
                     $(".user>.list").html(html);
                     searchScroll.refresh();
@@ -219,6 +225,7 @@ $(function () {
             //获取综合内容
             SearchApis.getSearch(keyword,this.offset,this.limit,this.type)
                 .then(function (data) {
+                    if (isEmptyObj(data.result)){return}
                     let html = template("albumItem",data.result);
                     $(".album>.list").html(html);
                     searchScroll.refresh();
@@ -238,8 +245,14 @@ $(function () {
             //获取综合内容
             SearchApis.getSearch(keyword,this.offset,this.limit,this.type)
                 .then(function (data) {
+                    if (isEmptyObj(data.result)){return}
                     let html = template("djRadioItem",data.result);
                     $(".djRadio>.list").html(html);
+                    //监听电台的的点击事件
+                    $(".main-in>.djRadio>.list>li").click(function () {
+                        let djId = this.dataset.djId;
+                        window.location.href = "./../djDetail/index.html?id=" + djId;
+                    });
                     searchScroll.refresh();
                 })
                 .catch(function (e) {
@@ -257,6 +270,7 @@ $(function () {
             //获取综合内容
             SearchApis.getSearch(keyword,this.offset,this.limit,this.type)
                 .then(function (data) {
+                    if (isEmptyObj(data.result)){return}
                     let html = template("playListItem",data.result);
                     $(".playList>.list").html(html);
                     searchScroll.refresh();

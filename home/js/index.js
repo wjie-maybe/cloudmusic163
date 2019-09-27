@@ -1,4 +1,6 @@
 $(function () {
+    //解决移动端点击延迟问题
+    FastClick.attach(document.body);
    /*公共头部处理*/
     $(".header").load("./../common/header.html",function () {
         let script = document.createElement("script");

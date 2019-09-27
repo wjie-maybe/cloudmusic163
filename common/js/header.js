@@ -107,9 +107,14 @@ $(function () {
                     console.log(e);
                 });
         }
-        $(".current-top").html(`搜"${this.value}"`);
+        $(".current-top").html(`搜索"<span>${this.value}</span>"`);
         searchScroll.refresh();
     },1000);
+    $(".current-top").click(function () {
+        let text = $(this).find("span").text();
+        window.location.href="./../searchDetail/index.html?keyword="+text;
+        setHistory(text);
+    });
     function getHistory() {
         let historyArray = localStorage.getItem("history");
         if (!historyArray){

@@ -204,6 +204,9 @@
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min + 1)) + min; //含最大值，含最小值
     }
+    function isEmptyObj(obj){
+        return Object.keys(obj).length === 0;
+    }
     window.getScreen = getScreen;
     window.getPageScroll = getPageScroll;
     window.addEvent = addEvent;
@@ -217,4 +220,6 @@
     window.clearSongs = clearSongs;
     window.deleteSongs = deleteSongs;
     window.getRandomIntInclusive = getRandomIntInclusive;
+    window.isEmptyObj = isEmptyObj;
+    window.dateFormart = dateFormart;
 })();
